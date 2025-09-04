@@ -8,7 +8,16 @@ configDotenv();
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://genai-chatbot-node-production.up.railway.app",
+      "http://localhost:5173",
+    ],
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 app.use(express.json());
 
 const USE_OLLAMA = false; // Set to false to test Gemini
@@ -318,4 +327,3 @@ app.post("/api/chat", async (req, res) => {
 app.listen(process.env.PORT || 5000, () => {
   logger.info(`🚀 Server is running on port ${process.env.PORT || 5000}`);
 });
-  
