@@ -10,10 +10,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: [
-      "https://genai-chatbot-node-production.up.railway.app",
-      "http://localhost:5173",
-    ],
+    origin: ["https://chat-my-ai.netlify.app", "http://localhost:5173"],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
